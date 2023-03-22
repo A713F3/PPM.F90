@@ -1,4 +1,4 @@
-# PPM Module - Fortran
+# Portable Pixmap (PPM) Module - Fortran
 Simple and easy-to-use module to create and modify ppm images.
 
 ## Features
@@ -24,3 +24,14 @@ end program
 
 ### Output (Upscaled): 
 ![example_output](imgs/example_output.png)
+
+## Build
+
+``` sh
+# Just Compile PPM
+gfortran -c ppm.f90
+
+# Compile Project
+gfortran -c [FileName].f90
+gfortran -o [OutputFile].out [FileName].o ppm.o
+```

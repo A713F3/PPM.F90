@@ -35,3 +35,13 @@ gfortran -c ppm.f90
 gfortran -c [FileName].f90
 gfortran -o [OutputFile].out [FileName].o ppm.o
 ```
+
+## List of All Procedures
+
+| Procedure | Description |
+| :---      | :---        |
+| `ppm_init(width, height)` | Initializes ppm module. |
+| `ppm_release()` | Releases all resources that ppm uses. |
+| `render_image(unit, file_name)` | Renders the image for the given unit and filename. |
+| `color(r, g, b)` | Returns a color. |
+| `point(x, y, color)` | Draws a point on the image. |

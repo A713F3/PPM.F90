@@ -76,6 +76,12 @@ implicit none
         color%b = b
     end function
 
+    function distance(x1, y1, x2, y2)
+        integer :: x1, y1, x2, y2
+        real :: distance
+        distance = sqrt(real((x1 - x2)**2 + (y1 - y2)**2))
+    end function
+
     subroutine point(x, y, point_color)
         integer, intent(in) :: x, y
         type(color_type), intent(in) :: point_color
@@ -83,6 +89,45 @@ implicit none
         image_matrix(y, x) = point_color
     end subroutine point
 
-    ! =======================================
+    subroutine line(x1, y1, x2, y2, line_color)
+        integer, intent(in) :: x1, y1, x2, y2
+        type(color_type), intent(in) :: line_color
+        integer :: x, y, dx, dy
 
+        dx = x2 - x1
+        dy = y2 - y1
+
+        do x=x1, x2
+            y = y1 + dy * (x - x1) / dx
+
+            image_matrix(y, x) = line_color
+        end do
+    end subroutine line
+
+    subroutine rect(x, y, width, height, rect_color)
+        integer, intent(in) :: x, y, width, height
+        type(color_type), intent(in) :: rect_color
+        integer :: i
+
+        ! Draw horizontal lines
+        do i=x, x+width
+            ! Top line
+            image_matrix(y, i) = rect_color
+
+            ! Bottom line
+            image_matrix(y+height, i) = rect_color
+        end do
+
+        ! Draw vertical lines
+        do i=y, y+height
+            ! Left line
+            image_matrix(i, x) = rect_color
+
+            ! Right line
+            image_matrix(i, x+width) = rect_color
+        end do
+        
+    end subroutine rect
+
+    ! =======================================
 end module ppm

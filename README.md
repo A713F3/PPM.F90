@@ -2,7 +2,7 @@
 Simple and easy-to-use module to create and modify ppm images.
 
 ## Features
-- Draw
+- Drawing
     - point
     - line (using a naive line-drawing algorithm but going to improve)
     - rectangle

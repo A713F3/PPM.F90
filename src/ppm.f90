@@ -54,10 +54,12 @@ implicit none
             do j=1, image_width
                 write_color = image_matrix(i, j)
 
-                write(unit, "(I3, X, I3, X, I3, X)", advance="no") &
+                write(unit, "(I3, X, I3, X, I3, /)", advance="no") &
                     write_color%r, write_color%g, write_color%b
             end do
         end do
+
+        close(unit)
 
     end subroutine render_image
 
